@@ -1,25 +1,19 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "outDir": "./dist",
-    "rootDir": ".",
-    "paths": {
-      "@/*": ["./*"]
-    },
-    "typeRoots": [
-      "./node_modules/@types",
-      "./types"
-    ]
-  },
-  "include": [
-    "**/*.ts",
-    "types/**/*.d.ts"
-  ],
-  "exclude": ["node_modules"]
+	"compilerOptions": {
+		"target": "ES2020",
+		"module": "CommonJS",
+		"moduleResolution": "Node",
+		"esModuleInterop": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"outDir": "./dist",
+		"rootDir": ".",
+		"paths": {
+			"@/*": ["./*"]
+		},
+		"typeRoots": ["./node_modules/@types", "./types"]
+	},
+	"include": ["**/*.ts", "types/**/*.d.ts"],
+	"exclude": ["node_modules"]
 }

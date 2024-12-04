@@ -8,16 +8,21 @@ import { AuthenticatedRequest } from '../types';
 
 const router = express.Router();
 
-router.post('/start-session', async (req, res) => {
-	console.log('[req]', req);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+router.post('/start-session', async (_, res) => {
 	const token = await startSession();
-	res.status(200).json({ token });
+
+	if (!token) res.status(500).json({ message: 'Failed to start session' });
+	else res.status(200).json({ token });
 });
 
 router.get('/validate-session', requireAuth, (async (req, res) => {
 	const authenticatedReq = req as AuthenticatedRequest;
 	const isValid = await validateSession(authenticatedReq.token);
-	res.status(200).send(isValid);
+
+	if (!isValid)
+		res.status(401).json({ message: 'Invalid or expired session token' });
+	else res.status(200).send(isValid);
 }) as RequestHandler);
 
 export default router;

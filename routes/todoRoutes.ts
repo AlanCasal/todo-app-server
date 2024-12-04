@@ -42,7 +42,10 @@ router.get(
 	requireAuth,
 	asyncHandler(async (req: AuthenticatedRequest, res: Response) => {
 		const todos = await getTodos(req.token);
-		res.status(200).send(todos);
+
+		if (todos === false)
+			res.status(401).json({ message: 'Invalid or expired session token' });
+		else res.status(200).send(todos);
 	})
 );
 
